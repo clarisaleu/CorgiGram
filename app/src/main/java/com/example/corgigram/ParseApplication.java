@@ -2,6 +2,7 @@ package com.example.corgigram;
 
 import android.app.Application;
 
+import com.example.corgigram.model.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -12,6 +13,9 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Register Post Class as subclass
+        ParseObject.registerSubclass(Post.class);
 
         // Use for troubleshooting -- remove this line for production
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
@@ -34,10 +38,5 @@ public class ParseApplication extends Application {
                 .clientBuilder(builder)
                 .server("https://clarisaleu.herokuapp.com/parse/").build());
 
-
-//        // New test creation of object below
-//        ParseObject testObject = new ParseObject("TestObject");
-//        testObject.put("foo", "bar");
-//        testObject.saveInBackground();
     }
 }

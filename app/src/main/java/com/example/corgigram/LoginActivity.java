@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = usernameInput.getText().toString();
                 String password = passwordInput.getText().toString();
-
                 login(username, password);
 
             }
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                if(e!=null){
+                if(e == null){
                     Log.d(TAG,"Login Successful");
                     final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
