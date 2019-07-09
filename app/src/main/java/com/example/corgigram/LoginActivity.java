@@ -41,15 +41,15 @@ public class LoginActivity extends AppCompatActivity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                if(e == null){
+                if(e != null){
+                    Log.d(TAG, "Login Failure");
+                    e.printStackTrace();
+                    return;
+                }
                     Log.d(TAG,"Login Successful");
                     final Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
-                } else{
-                    Log.d(TAG, "Login Failure");
-                    e.printStackTrace();
-                }
             }
         });
     }
