@@ -1,6 +1,7 @@
 package com.example.corgigram;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.corgigram.model.Post;
 import com.parse.FindCallback;
@@ -30,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button captureButton;
     private ImageView ivPostImage;
     private Button submitButton;
+    private TextView corgiGram;
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
@@ -43,6 +46,11 @@ public class HomeActivity extends AppCompatActivity {
         captureButton = (Button) findViewById(R.id.captureImage_btn);
         submitButton = (Button) findViewById(R.id.submit_btn);
         ivPostImage = (ImageView) findViewById(R.id.ivPostImage);
+
+        // Set custom font
+        corgiGram = (TextView) findViewById(R.id.corgigram);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/logo.ttf");
+        corgiGram.setTypeface(custom_font);
 
 
         captureButton.setOnClickListener(new View.OnClickListener(){
