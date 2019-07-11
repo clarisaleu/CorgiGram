@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.corgigram.home.HomeActivity;
-import com.example.corgigram.share.ShareActivity;
+import com.example.corgigram.model.User;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String username, String password){
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
+        User.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
                 // Login Unsuccessful

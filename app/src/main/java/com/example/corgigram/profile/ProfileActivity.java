@@ -22,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private Context mContext = ProfileActivity.this;
     private ProgressBar mProgressBar;
+    private ImageView mProfImg;
     private static final int ACTIVITY_NUM = 4;
 
     @Override
@@ -31,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mProgressBar = (ProgressBar) findViewById(R.id.profileProgBar);
         mProgressBar.setVisibility(View.GONE);
+        mProfImg = (ImageView) findViewById(R.id.profile_image);
 
         setUpBottomNavigationView();
         setUpToolbar();

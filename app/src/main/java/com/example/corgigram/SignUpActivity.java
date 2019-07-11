@@ -12,6 +12,7 @@ import com.example.corgigram.home.HomeActivity;
 import com.example.corgigram.model.User;
 import com.example.corgigram.share.ShareActivity;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {

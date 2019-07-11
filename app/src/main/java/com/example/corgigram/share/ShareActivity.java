@@ -50,7 +50,7 @@ public class ShareActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+        setContentView(R.layout.activity_home);
         setUpBottomNavigationView();
         descriptionInput = (EditText) findViewById(R.id.description_et);
         captureButton = (Button) findViewById(R.id.captureImage_btn);
