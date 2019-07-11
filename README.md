@@ -11,7 +11,7 @@ The following **required** functionality is completed:
 - [x] User sees app icon in home screen.
 - [x] User can sign up to create a new account using Parse authentication
 - [x] User can log in and log out of his or her account
-- [ ] The current signed in user is persisted across app restarts
+- [x] The current signed in user is persisted across app restarts
 - [ ] User can take a photo, add a caption, and post it to "Instagram"
 - [ ] User can view the last 20 posts submitted to "Instagram"
 - [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
@@ -36,7 +36,13 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Used 3+ different libraries.
+    * Universal Image Loader for image loading vs. Glide.
+    * Circle Image Library for circular profile image styling.
+    * BottomNavigationViewEx which is an enhancement of BottomNavigationView
+- [x] Edit profile page view where users can change their personal information
+- [x] User profile page view where users can see their posts
+- [x]
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
