@@ -1,7 +1,9 @@
-package com.example.corgigram;
+package com.example.corgigram.share;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -9,13 +11,18 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.corgigram.R;
 import com.example.corgigram.model.Post;
+import com.example.corgigram.util.BottomNavigationViewHelper;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -26,31 +33,29 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
-    private final String TAG = "HomeActivity";  // For logcat messages
+public class ShareActivity extends AppCompatActivity {
+    private final String TAG = "ShareActivity";  // For logcat messages
+    private static final int ACTIVITY_NUM = 2;
     private EditText descriptionInput;
     private Button captureButton;
     private ImageView ivPostImage;
     private Button submitButton;
-    private TextView corgiGram;
+
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
-    public String photoFileName = "photo.jpg";
     File photoFile;
+    String photoFileName = "photo.jpg";
+    private Context mContext = ShareActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_feed);
+        setUpBottomNavigationView();
         descriptionInput = (EditText) findViewById(R.id.description_et);
         captureButton = (Button) findViewById(R.id.captureImage_btn);
         submitButton = (Button) findViewById(R.id.submit_btn);
         ivPostImage = (ImageView) findViewById(R.id.ivPostImage);
-
-        // Set custom font
-        corgiGram = (TextView) findViewById(R.id.corgigram);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/logo.ttf");
-        corgiGram.setTypeface(custom_font);
 
 
         captureButton.setOnClickListener(new View.OnClickListener(){
@@ -59,13 +64,17 @@ public class HomeActivity extends AppCompatActivity {
                 onLaunchCamera(v);
             }
         });
-
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String description = descriptionInput.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
-                savePost(description, user);
+                if(photoFile == null  || ivPostImage.getDrawable() == null){
+                    Log.e(TAG, "No photo to submit");
+                    Toast.makeText(ShareActivity.this, "There is no photo!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                savePost(description, user, photoFile);
             }
         });
     }
@@ -75,18 +84,29 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference to access to future access
         photoFile = getPhotoFileUri(photoFileName);
-
         // wrap File object into a content provider
-        // required for API >= 24
-        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(ShareActivity.this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
-
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
         // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                // by this point we have the camera photo on disk
+                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+                // RESIZE BITMAP, see section below
+                // Load the taken image into a preview
+                ivPostImage.setImageBitmap(takenImage);
+            } else { // Result was a failure
+                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -110,11 +130,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
     // Method to save posts
-    private void savePost(final String description, ParseUser user) {
+    private void savePost(final String description, ParseUser user, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
         post.setUser(user);
-       // post.setImage();
+        post.setImage(new ParseFile(photoFile));
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -125,6 +145,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 Log.d(TAG, "Success!");
                 descriptionInput.setText("");  // Empty out text
+                ivPostImage.setImageResource(0);
             }
         });
     }
@@ -150,5 +171,16 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
+    // BottomNavBar Setup
+    private void setUpBottomNavigationView(){
+        Log.d(TAG, "setUpBottomNavigationView(): setting up your bottom nav bar...");
+        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
+    }
 
 }

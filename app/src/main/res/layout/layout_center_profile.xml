@@ -1,0 +1,66 @@
+<merge xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/white">
+
+
+         <!--Top toolbar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relLay1">
+
+            <include
+                layout="@layout/snippet_top_profilebar"
+                android:layout_width="31dp"
+                android:layout_height="13dp"></include>
+        </RelativeLayout>
+
+        <!--Middle Section -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/relLay1"
+            android:background="@drawable/border_bottom">
+
+            <LinearLayout
+                android:id="@+id/linLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/relLay2"
+                    android:layout_marginStart="25dp"
+                    android:layout_weight="25"
+                    android:layout_marginLeft="25dp">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp" />
+                    
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="75">
+                    <include layout="@layout/snippet_top_profile">
+
+                    </include>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</merge>
