@@ -31,7 +31,6 @@
                 android:textColor="@color/blue_5"
                 android:textSize="16sp" />
 
-
             <!-- username section -->
             <RelativeLayout
                 android:id="@+id/relLayout1"
@@ -57,7 +56,6 @@
                     android:background="@null"
                     android:hint="username"
                     android:inputType="textNoSuggestions" />
-
             </RelativeLayout>
 
 
@@ -86,7 +84,6 @@
                     android:background="@null"
                     android:hint="display name"
                     android:inputType="textNoSuggestions" />
-
             </RelativeLayout>
 
 

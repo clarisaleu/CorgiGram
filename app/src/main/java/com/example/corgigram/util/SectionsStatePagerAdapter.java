@@ -28,19 +28,20 @@ public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
         return mFragmentList.size();
     }
 
-    public void addFragment(Fragment fragment, String fragmentName){
+    public void addFragment(Fragment fragment, String fragmentName) {
         mFragmentList.add(fragment);
-        mFragments.put(fragment, mFragmentList.size()-1);
-        mFragmentNumbers.put(fragmentName, mFragmentList.size()-1);
-        mFragmentNames.put(mFragmentList.size()-1, fragmentName);
+        mFragments.put(fragment, mFragmentList.size() - 1);
+        mFragmentNumbers.put(fragmentName, mFragmentList.size() - 1);
+        mFragmentNames.put(mFragmentList.size() - 1, fragmentName);
     }
 
     /**
      * return fragment number with name @param if it exists, null otherwise
+     *
      * @param fragmentName Name of fragment
      * @return fragment number
      */
-    public Integer getFragmentNumber(String fragmentName){
+    public Integer getFragmentNumber(String fragmentName) {
         if (mFragmentNumbers.containsKey(fragmentName)) {
             return mFragmentNumbers.get(fragmentName);
         }
@@ -50,10 +51,11 @@ public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
 
     /**
      * return fragment number corresponding to fragment @param if it exists, null otherwise
+     *
      * @param fragment Name of fragment
      * @return fragment number
      */
-    public Integer getFragmentNumber(Fragment fragment){
+    public Integer getFragmentNumber(Fragment fragment) {
         if (mFragments.containsKey(fragment)) {
             return mFragments.get(fragment);
         }
@@ -62,10 +64,11 @@ public class SectionsStatePagerAdapter extends FragmentStatePagerAdapter {
 
     /**
      * return fragment name corresponding to fragment number @param if it exists, null otherwise
+     *
      * @param i number of fragment
      * @return fragment name
      */
-    public String getFragmentName(Integer i){
+    public String getFragmentName(Integer i) {
         if (mFragmentNames.containsKey(i)) {
             return mFragmentNames.get(i);
         }

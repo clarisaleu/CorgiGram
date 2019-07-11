@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private Context mContext = ProfileActivity.this;
     private final static ParseUser user = ParseUser.getCurrentUser();
-    private static final int ACTIVITY_NUM = 4;
+    private static final int ACTIVITY_NUM = 3;
 
     @BindView(R.id.profileProgBar) ProgressBar mProgressBar;
     @BindView(R.id.profile_image) ImageView mProfImg;

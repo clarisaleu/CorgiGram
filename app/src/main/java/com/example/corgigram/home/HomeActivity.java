@@ -69,8 +69,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // Set up bottom nav bar
         setUpBottomNavigationView();
-        // Set up view pager
-        setUpViewPager();
     }
 
     private void getPosts() {
@@ -97,22 +95,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    // Responsible for adding 3 tabs - Home, Camera, Messages; No need for this at the moment
-    private void setUpViewPager() {
-        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CameraFragment());
-        adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new MessageFragment());
-//        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
-//        viewPager.setAdapter(adapter);
-//
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(viewPager);
-//        tabLayout.getTabAt(0).setIcon(R.drawable.icon_cute);
-//        tabLayout.getTabAt(1).setIcon(R.drawable.instagram_home_outline_24);
-//        tabLayout.getTabAt(2).setIcon(R.drawable.arrow);
     }
 
     // BottomNavBar Setup

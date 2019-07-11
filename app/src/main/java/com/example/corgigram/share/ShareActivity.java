@@ -42,7 +42,7 @@ import butterknife.ButterKnife;
  */
 public class ShareActivity extends AppCompatActivity {
     private final String TAG = "ShareActivity";  // For logcat messages
-    private static final int ACTIVITY_NUM = 2;
+    private static final int ACTIVITY_NUM = 1;
     @BindView(R.id.description_et) EditText descriptionInput;
     @BindView(R.id.captureImage_btn) Button captureButton;
     @BindView(R.id.ivPostImage) ImageView ivPostImage;
