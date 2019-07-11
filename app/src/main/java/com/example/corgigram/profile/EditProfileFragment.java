@@ -44,7 +44,7 @@ public class EditProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
-        ButterKnife.bind(view);
+        ButterKnife.bind(this, view);
         mContext = (Context) view.getContext();
 
         // Pull from data base and display
