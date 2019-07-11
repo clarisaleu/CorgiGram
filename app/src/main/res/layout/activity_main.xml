@@ -38,8 +38,8 @@
         android:id="@+id/corgigram"
         android:layout_width="300dp"
         android:layout_height="91dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:layout_marginTop="44dp"
         android:src="@drawable/corgigramtxt"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,20 +92,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_et" />
 
-    <Button
-        android:id="@+id/signup_btn"
-        android:layout_width="340dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/btn_bg"
-        android:text="Sign Up"
-        android:textAllCaps="false"
-        android:textColor="@color/login_form_details_medium"
+
+    <TextView
+        android:id="@+id/new_user"
+        android:layout_width="181dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:linksClickable="true"
+        android:text="New user?"
+        android:textColor="@color/login_form_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
-
 
     <TextView
         android:id="@+id/forgot_password"
@@ -113,10 +113,9 @@
         android:layout_height="22dp"
         android:layout_marginStart="112dp"
         android:layout_marginLeft="112dp"
-        android:layout_marginTop="56dp"
         android:text="Don't remember password?"
         android:textColor="@color/login_form_details"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/new_user" />
 
 </android.support.constraint.ConstraintLayout>

@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-
         android:name=".ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon_cute"
@@ -16,19 +15,23 @@
         android:roundIcon="@drawable/icon_cute"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".profile.AccountSettings"></activity>
+        <activity android:name=".likes.LikesActivity" />
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".search.SearchActivity" />
+        <activity android:name=".home.HomeActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".share.ShareActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
+        </activity> <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.codepath.fileprovider"
@@ -38,7 +41,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
-
     </application>
 
 </manifest>

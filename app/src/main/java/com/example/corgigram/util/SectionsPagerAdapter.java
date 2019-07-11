@@ -1,4 +1,4 @@
-package com.example.corgigram.home;
+package com.example.corgigram.util;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

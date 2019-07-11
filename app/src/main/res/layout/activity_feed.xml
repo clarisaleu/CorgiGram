@@ -4,6 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedActivity">
+    tools:context=".home.HomeActivity">
+
+    <!--Top-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <include layout="@layout/layout_top_tabs" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!--Middle-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/middleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="580dp"
+        android:layout_below="@id/topLayout"
+        app:layout_constraintStart_toStartOf="@+id/bottomLayout"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout">
+
+        <include layout="@layout/layout_center_viewpage" />
+    </android.support.constraint.ConstraintLayout>
+
+    <!--Bottom-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middleLayout"
+        app:layout_constraintVertical_bias="0.0">
+        <include layout="@layout/layout_bottom_navigation" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.example.corgigram.R;
 import com.example.corgigram.util.BottomNavigationViewHelper;
+import com.example.corgigram.util.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class HomeActivity extends AppCompatActivity {
