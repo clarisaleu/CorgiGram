@@ -11,6 +11,10 @@ import com.example.corgigram.R;
 import com.example.corgigram.util.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+/**
+ * @author      Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Likes Activity for CorgiGram
+ */
 public class LikesActivity extends AppCompatActivity {
     private static final String TAG = "LikesActivity";
     private static final int ACTIVITY_NUM = 3;
@@ -24,7 +28,7 @@ public class LikesActivity extends AppCompatActivity {
     }
 
     // BottomNavBar Setup
-    private void setUpBottomNavigationView(){
+    private void setUpBottomNavigationView() {
         Log.d(TAG, "setUpBottomNavigationView(): setting up your bottom nav bar...");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavView);
         BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx);

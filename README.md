@@ -13,7 +13,7 @@ The following **required** functionality is completed:
 - [x] User can log in and log out of his or her account
 - [x] The current signed in user is persisted across app restarts
 - [ ] User can take a photo, add a caption, and post it to "Instagram"
-- [ ] User can view the last 20 posts submitted to "Instagram"
+- [x] User can view the last 20 posts submitted to "Instagram"
 - [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [ ] User can tap a post to view post details, including timestamp and caption.
 
@@ -36,13 +36,12 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Used 3+ different libraries.
-    * Universal Image Loader for image loading vs. Glide.
+- [x] Used 2+ different libraries.
     * Circle Image Library for circular profile image styling.
     * BottomNavigationViewEx which is an enhancement of BottomNavigationView
 - [x] Edit profile page view where users can change their personal information
 - [x] User profile page view where users can see their posts
-- [x]
+- [x] 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

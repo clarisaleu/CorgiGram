@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 
 import com.example.corgigram.R;
 
+/**
+ * @author      Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Message Fragment for Home Tabs
+ */
 public class MessageFragment extends Fragment  {
     private static final String TAG = "MessageFragment";
 

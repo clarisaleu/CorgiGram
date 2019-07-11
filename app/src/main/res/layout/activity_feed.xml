@@ -7,39 +7,59 @@
     tools:context=".home.HomeActivity">
 
     <!--Top-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/topLayout"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <include layout="@layout/layout_top_tabs" />
-    </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_bottom" />
+
+    </android.support.design.widget.AppBarLayout>
+
 
     <!--Middle-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/middleLayout"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
-        android:layout_below="@id/topLayout"
-        app:layout_constraintStart_toStartOf="@+id/bottomLayout"
-        app:layout_constraintTop_toBottomOf="@+id/topLayout">
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-        <include layout="@layout/layout_center_viewpage" />
-    </android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvPostFeed"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavView"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <!--Bottom-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/bottomLayout"
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/border_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middleLayout"
-        app:layout_constraintVertical_bias="0.0">
-        <include layout="@layout/layout_bottom_navigation" />
-    </android.support.constraint.ConstraintLayout>
-
+        app:menu="@menu/bottom_navigation_menu" />
 </android.support.constraint.ConstraintLayout>

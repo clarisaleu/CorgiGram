@@ -15,22 +15,32 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class LoginActivity extends AppCompatActivity {
-    private EditText usernameInput;
-    private EditText passwordInput;
-    private Button loginBtn;
-    private TextView newUser;
-    private final String TAG = "LoginActivity";  // For logcat
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
+
+/**
+ * @author      Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Login Activity for CorgiGram
+ */
+public class LoginActivity extends AppCompatActivity {
+    @BindView(R.id.username_et) private EditText usernameInput;
+    @BindView(R.id.password_et) private EditText passwordInput;
+    @BindView(R.id.login_btn) private Button loginBtn;
+    @BindView(R.id.new_user) private TextView newUser;
+    private final String TAG = "LoginActivity";  // For logcat
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        usernameInput = (EditText) findViewById(R.id.username_et);
-        passwordInput = (EditText) findViewById(R.id.password_et);
-        loginBtn = (Button) findViewById(R.id.login_btn);
-        newUser = (TextView) findViewById(R.id.new_user);
+        ButterKnife.bind(this);
+
+        // If current user present, persist login
+        if(ParseUser.getCurrentUser()!=null){
+            Intent it = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(it);
+        }
 
         // New User Button Listener
         newUser.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                 // Start Sign up activity
                 Intent it = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(it);
-                finish();
             }
         });
 
@@ -50,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
                 String username = usernameInput.getText().toString();
                 String password = passwordInput.getText().toString();
                 login(username, password);
-
             }
         });
     }

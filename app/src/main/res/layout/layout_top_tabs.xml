@@ -1,12 +1,12 @@
 <merge
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        >
+        android:background="@color/colorPrimary">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -21,8 +21,7 @@
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom">
-            </android.support.design.widget.TabLayout>
+                android:background="@drawable/border_bottom"></android.support.design.widget.TabLayout>
 
 
         </android.support.design.widget.AppBarLayout>

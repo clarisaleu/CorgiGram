@@ -1,7 +1,6 @@
-<merge xmlns:tools="http://schemas.android.com/tools"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
-            <include layout="@layout/snippet_top_profilebar"/>
+            <include layout="@layout/snippet_top_profilebar" />
 
         </RelativeLayout>
 
@@ -41,17 +40,17 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="25dp"
-                    android:layout_weight="25"
-                    android:layout_marginLeft="25dp">
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="25">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/corgi"
                         android:layout_centerVertical="true"
+                        android:src="@drawable/corgi"
                         app:civ_border_color="@color/black"
-                        app:civ_border_width="2dp"/>
+                        app:civ_border_width="2dp" />
 
 
                 </RelativeLayout>
@@ -59,11 +58,11 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30dp"
                     android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_weight="75">
 
-                    <include layout="@layout/snippet_top_profile"/>
+                    <include layout="@layout/snippet_top_profile" />
 
                 </RelativeLayout>
 

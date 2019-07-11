@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.corgigram.R;
 
-public class SignOutFragment extends Fragment  {
+/**
+ * @author Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Sign Out Fragment for CorgiGram Account Settings
+ */
+public class SignOutFragment extends Fragment {
     private static final String TAG = "SignOutFragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signout, container, false);
-        return  view;
+        return view;
     }
 }

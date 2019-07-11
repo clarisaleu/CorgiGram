@@ -6,18 +6,19 @@ import com.example.corgigram.model.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
-
+/**
+ * @author Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: ParseApplication for CorgiGram, connects to DataBase
+ */
 public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         // Register Post Class as subclass
         ParseObject.registerSubclass(Post.class);
 
         // Use for troubleshooting -- remove this line for production
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
-
 
         // set applicationId, and server server based on the values in the Heroku settings.
         // clientKey is not needed unless explicitly configured

@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/bg_login">
-
+    android:background="@drawable/bg_login"
+    tools:context=".LoginActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_left"
@@ -19,9 +18,8 @@
         android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_end="24dp"
         android:orientation="vertical"
-        />
+        app:layout_constraintGuide_end="24dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -56,9 +54,9 @@
         android:background="@drawable/et_bg"
         android:ems="10"
         android:hint="Username"
+        android:inputType="textEmailAddress"
         android:padding="16dp"
         android:textColorHint="@color/login_form_details_light"
-        android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -70,11 +68,11 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/et_bg"
+        android:drawableRight="@drawable/eye"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColorHint="@color/login_form_details_light"
         android:padding="16dp"
-        android:drawableRight="@drawable/eye"
+        android:textColorHint="@color/login_form_details_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_et" />
 
@@ -87,8 +85,8 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/btn_bg"
         android:text="Log In"
-        android:textColor="@color/login_form_details_medium"
         android:textAllCaps="false"
+        android:textColor="@color/login_form_details_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_et" />
 

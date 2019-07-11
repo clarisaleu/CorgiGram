@@ -11,6 +11,10 @@ import com.example.corgigram.R;
 import com.example.corgigram.util.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+/**
+ * @author Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Search Activity for CorgiGram
+ */
 public class SearchActivity extends AppCompatActivity {
     private static final String TAG = "SearchActivity";
     private static final int ACTIVITY_NUM = 1 ;

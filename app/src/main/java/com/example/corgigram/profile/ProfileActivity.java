@@ -3,7 +3,6 @@ package com.example.corgigram.profile;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,26 +12,79 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.corgigram.R;
 import com.example.corgigram.util.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * @author Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: User Profile Activity for CorgiGram
+ */
 public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
     private Context mContext = ProfileActivity.this;
-    private ProgressBar mProgressBar;
-    private ImageView mProfImg;
+    private final static ParseUser user = ParseUser.getCurrentUser();
     private static final int ACTIVITY_NUM = 4;
+
+    @BindView(R.id.profileProgBar) private static ProgressBar mProgressBar;
+    @BindView(R.id.profile_image) private static ImageView mProfImg;
+    @BindView(R.id.screenNameProf) private static TextView topNavBarScreenName;
+    @BindView(R.id.description) private static TextView descript;
+    @BindView(R.id.display_name) private static TextView dispName;
+    @BindView(R.id.website) private static TextView website;
+    @BindView(R.id.tvFollowers) private static TextView followers;
+    @BindView(R.id.tvFollowing) private static TextView following;
+    @BindView(R.id.tvPosts) private static TextView posts;
+    @BindView(R.id.textEditProfile) private static TextView editProf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        ButterKnife.bind(this);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.profileProgBar);
+        // Set top nav bar screen name
+        topNavBarScreenName.setText(user.getUsername());
+
+        // Set on click listener for edit profile text
+        editProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(ProfileActivity.this, AccountSettings.class);
+                it.putExtra("calling_activity", "profile_activity");
+                startActivity(it);
+            }
+        });
+
+        // Pull from database and display
+        descript.setText(user.getString("description"));
+        dispName.setText(user.getString("handle"));
+        website.setText(user.getString("website"));
+        followers.setText(user.getString("followers"));
+        following.setText(user.getString("following"));
+        posts.setText(user.getString("posts"));
+
+        // Hide prog Bar
         mProgressBar.setVisibility(View.GONE);
-        mProfImg = (ImageView) findViewById(R.id.profile_image);
+
+        // Get Image
+        ParseUser user = ParseUser.getCurrentUser();
+        ParseFile img = user.getParseFile("profileImg");
+
+        // If image exits, display
+        if(img != null) {
+            String imageUrl = img.getUrl();
+            Glide.with(mContext).load(imageUrl).into(mProfImg);
+        }
 
         setUpBottomNavigationView();
         setUpToolbar();

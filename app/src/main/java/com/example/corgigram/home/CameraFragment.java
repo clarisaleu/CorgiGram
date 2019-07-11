@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 
 import com.example.corgigram.R;
 
-public class CameraFragment extends Fragment  {
+/**
+ * @author      Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Camera Fragment for HomePage Tabs
+ */
+public class CameraFragment extends Fragment {
     private static final String TAG = "CameraFragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
-        return  view;
+        return view;
     }
 }

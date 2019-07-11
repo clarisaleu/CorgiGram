@@ -33,14 +33,20 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * @author      Clarisa Leu-Rodriguez <clarisaleu@gmail.com>
+ * Description: Share Activity for CorgiGram
+ */
 public class ShareActivity extends AppCompatActivity {
     private final String TAG = "ShareActivity";  // For logcat messages
     private static final int ACTIVITY_NUM = 2;
-    private EditText descriptionInput;
-    private Button captureButton;
-    private ImageView ivPostImage;
-    private Button submitButton;
-
+    @BindView(R.id.description_et) private EditText descriptionInput;
+    @BindView(R.id.captureImage_btn) private Button captureButton;
+    @BindView(R.id.ivPostImage) private ImageView ivPostImage;
+    @BindView(R.id.submit_btn) private Button submitButton;
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     File photoFile;
@@ -52,15 +58,11 @@ public class ShareActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setUpBottomNavigationView();
-        descriptionInput = (EditText) findViewById(R.id.description_et);
-        captureButton = (Button) findViewById(R.id.captureImage_btn);
-        submitButton = (Button) findViewById(R.id.submit_btn);
-        ivPostImage = (ImageView) findViewById(R.id.ivPostImage);
+        ButterKnife.bind(this);
 
-
-        captureButton.setOnClickListener(new View.OnClickListener(){
+        captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 onLaunchCamera(v);
             }
         });
@@ -69,7 +71,7 @@ public class ShareActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String description = descriptionInput.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
-                if(photoFile == null  || ivPostImage.getDrawable() == null){
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
                     Log.e(TAG, "No photo to submit");
                     Toast.makeText(ShareActivity.this, "There is no photo!", Toast.LENGTH_LONG).show();
                     return;
@@ -118,7 +120,7 @@ public class ShareActivity extends AppCompatActivity {
         File mediaStorageDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
 
@@ -127,7 +129,6 @@ public class ShareActivity extends AppCompatActivity {
 
         return file;
     }
-
 
     // Method to save posts
     private void savePost(final String description, ParseUser user, File photoFile) {
@@ -138,7 +139,7 @@ public class ShareActivity extends AppCompatActivity {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e!=null){
+                if (e != null) {
                     Log.d(TAG, "Error while saving");
                     e.printStackTrace();
                     return;
@@ -150,30 +151,28 @@ public class ShareActivity extends AppCompatActivity {
         });
     }
 
-
     // Used for debugging purposes
-    private void queryPosts(){
+    private void queryPosts() {
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
         postQuery.include(Post.KEY_USER);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.d(TAG,"Error with query");
+                if (e != null) {
+                    Log.d(TAG, "Error with query");
                     e.printStackTrace();
                     return;
                 }
-                for(int i = 0 ; i < posts.size(); i++) {
+                for (int i = 0; i < posts.size(); i++) {
                     Post post = posts.get(i);
-                    Log.d(TAG, "Post:" + post.getDescription() + "username = " +post.getUser().getUsername());
+                    Log.d(TAG, "Post:" + post.getDescription() + "username = " + post.getUser().getUsername());
                 }
             }
         });
     }
 
-
     // BottomNavBar Setup
-    private void setUpBottomNavigationView(){
+    private void setUpBottomNavigationView() {
         Log.d(TAG, "setUpBottomNavigationView(): setting up your bottom nav bar...");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavView);
         BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationViewEx);
