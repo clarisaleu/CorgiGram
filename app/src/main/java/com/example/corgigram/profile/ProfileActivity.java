@@ -34,16 +34,16 @@ public class ProfileActivity extends AppCompatActivity {
     private final static ParseUser user = ParseUser.getCurrentUser();
     private static final int ACTIVITY_NUM = 4;
 
-    @BindView(R.id.profileProgBar) private static ProgressBar mProgressBar;
-    @BindView(R.id.profile_image) private static ImageView mProfImg;
-    @BindView(R.id.screenNameProf) private static TextView topNavBarScreenName;
-    @BindView(R.id.description) private static TextView descript;
-    @BindView(R.id.display_name) private static TextView dispName;
-    @BindView(R.id.website) private static TextView website;
-    @BindView(R.id.tvFollowers) private static TextView followers;
-    @BindView(R.id.tvFollowing) private static TextView following;
-    @BindView(R.id.tvPosts) private static TextView posts;
-    @BindView(R.id.textEditProfile) private static TextView editProf;
+    @BindView(R.id.profileProgBar) ProgressBar mProgressBar;
+    @BindView(R.id.profile_image) ImageView mProfImg;
+    @BindView(R.id.screenNameProf) TextView topNavBarScreenName;
+    @BindView(R.id.description) TextView descript;
+    @BindView(R.id.display_name) TextView dispName;
+    @BindView(R.id.website) TextView website;
+    @BindView(R.id.tvFollowers) TextView followers;
+    @BindView(R.id.tvFollowing) TextView following;
+    @BindView(R.id.tvPosts) TextView posts;
+    @BindView(R.id.textEditProfile) TextView editProf;
 
 
     @Override

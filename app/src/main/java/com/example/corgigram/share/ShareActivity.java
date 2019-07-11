@@ -43,10 +43,10 @@ import butterknife.ButterKnife;
 public class ShareActivity extends AppCompatActivity {
     private final String TAG = "ShareActivity";  // For logcat messages
     private static final int ACTIVITY_NUM = 2;
-    @BindView(R.id.description_et) private EditText descriptionInput;
-    @BindView(R.id.captureImage_btn) private Button captureButton;
-    @BindView(R.id.ivPostImage) private ImageView ivPostImage;
-    @BindView(R.id.submit_btn) private Button submitButton;
+    @BindView(R.id.description_et) EditText descriptionInput;
+    @BindView(R.id.captureImage_btn) Button captureButton;
+    @BindView(R.id.ivPostImage) ImageView ivPostImage;
+    @BindView(R.id.submit_btn) Button submitButton;
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     File photoFile;

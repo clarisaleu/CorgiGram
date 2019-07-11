@@ -31,12 +31,9 @@ public class AccountSettings extends AppCompatActivity {
     private final static String TAG = "AccountSettings";
     private Context mContext;
     private SectionsStatePagerAdapter pagerAdapter;
-    @BindView(R.id.container)
-    private ViewPager mViewPager;
-    @BindView(R.id.relLayout1)
-    private RelativeLayout mRelativeLayout;
-    @BindView(R.id.backArrow)
-    private ImageView backArrow;
+    @BindView(R.id.container) ViewPager mViewPager;
+    @BindView(R.id.relLayout1) RelativeLayout mRelativeLayout;
+    @BindView(R.id.backArrow) ImageView backArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -23,16 +23,11 @@ import butterknife.ButterKnife;
  * Description: Sign Up Activity for CorgiGram Account Settings
  */
 public class SignUpActivity extends AppCompatActivity {
-    @BindView(R.id.username_et)
-    private static EditText username;
-    @BindView(R.id.password_et)
-    private static EditText password;
-    @BindView(R.id.email_et)
-    private static EditText email;
-    @BindView(R.id.name_et)
-    private static EditText name;
-    @BindView(R.id.signup_btn)
-    private static Button signupBtn;
+    @BindView(R.id.username_et) EditText username;
+    @BindView(R.id.password_et) EditText password;
+    @BindView(R.id.email_et) EditText email;
+    @BindView(R.id.name_et) EditText name;
+    @BindView(R.id.signup_btn) Button signupBtn;
     private final String TAG = "SignUpActivity";  // For logcat
 
     @Override

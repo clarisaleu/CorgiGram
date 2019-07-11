@@ -24,10 +24,10 @@ import butterknife.ButterKnife;
  * Description: Login Activity for CorgiGram
  */
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.username_et) private EditText usernameInput;
-    @BindView(R.id.password_et) private EditText passwordInput;
-    @BindView(R.id.login_btn) private Button loginBtn;
-    @BindView(R.id.new_user) private TextView newUser;
+    @BindView(R.id.username_et) EditText usernameInput;
+    @BindView(R.id.password_et) EditText passwordInput;
+    @BindView(R.id.login_btn) Button loginBtn;
+    @BindView(R.id.new_user) TextView newUser;
     private final String TAG = "LoginActivity";  // For logcat
 
     @Override

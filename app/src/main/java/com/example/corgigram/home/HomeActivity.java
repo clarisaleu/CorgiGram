@@ -32,10 +32,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
     private static final int ACTIVITY_NUM = 0;
     private final Context mContext = HomeActivity.this;
-    @BindView(R.id.rvPostFeed)
-    private static RecyclerView rvPosts;
-    @BindView(R.id.swipeContainer)
-    private SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.rvPostFeed) RecyclerView rvPosts;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
 
     private static PostAdapter postAdapter;
     ArrayList<Post> posts;

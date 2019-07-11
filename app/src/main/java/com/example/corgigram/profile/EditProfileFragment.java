@@ -28,24 +28,15 @@ public class EditProfileFragment extends Fragment {
     private static final String TAG = "EditProfileFragment";
     private static Context mContext;
 
-    @BindView(R.id.username)
-    private static EditText username;
-    @BindView(R.id.display_name)
-    private static EditText name;
-    @BindView(R.id.email)
-    private static EditText email;
-    @BindView(R.id.website)
-    private static EditText website;
-    @BindView(R.id.phoneNumber)
-    private static EditText phoneNumber;
-    @BindView(R.id.description)
-    private static EditText descript;
-    @BindView(R.id.saveChanges)
-    private static ImageView check;
-    @BindView(R.id.profile_photo)
-    private static ImageView mProfileImg;
-    @BindView(R.id.backArrow)
-    private ImageView back;
+    @BindView(R.id.username) EditText username;
+    @BindView(R.id.display_name) EditText name;
+    @BindView(R.id.email) EditText email;
+    @BindView(R.id.website) EditText website;
+    @BindView(R.id.phoneNumber) EditText phoneNumber;
+    @BindView(R.id.description) EditText descript;
+    @BindView(R.id.saveChanges) ImageView check;
+    @BindView(R.id.profile_photo) ImageView mProfileImg;
+    @BindView(R.id.backArrow) ImageView back;
     private static final ParseUser user = ParseUser.getCurrentUser();
 
 
