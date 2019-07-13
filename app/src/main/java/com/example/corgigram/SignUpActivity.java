@@ -57,9 +57,8 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                         // Sign-up successful - pass intent to home page
                         Log.d(TAG, "Login Successful");
-                        final Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                        final Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                         startActivity(intent);
-                        finish();
                     }
                 });
             }

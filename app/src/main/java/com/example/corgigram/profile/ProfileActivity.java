@@ -4,7 +4,10 @@ package com.example.corgigram.profile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -16,10 +19,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.corgigram.R;
+import com.example.corgigram.home.PostAdapter;
+import com.example.corgigram.model.Post;
 import com.example.corgigram.util.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +54,10 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.tvFollowing) TextView following;
     @BindView(R.id.tvPosts) TextView posts;
     @BindView(R.id.textEditProfile) TextView editProf;
+    @BindView(R.id.gridView) RecyclerView rvPosts;
+
+    private static PostAdapter postAdapter;
+    ArrayList<Post> postsList;
 
 
     @Override
@@ -51,6 +65,14 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
+
+        // Grid View
+        final GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+        postsList = new ArrayList<>();
+        postAdapter = new PostAdapter(postsList, 1);
+        rvPosts.setLayoutManager(layoutManager);
+        rvPosts.setAdapter(postAdapter);
+        getPosts();
 
         // Set top nav bar screen name
         topNavBarScreenName.setText(user.getUsername());
@@ -113,6 +135,31 @@ public class ProfileActivity extends AppCompatActivity {
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
+
+    }
+
+    private void getPosts() {
+        final Post.Query postsQuery = new Post.Query();
+        postsQuery
+                .getTop()
+                .withUser();
+        postsQuery.addDescendingOrder("createdAt");
+
+        postsQuery.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> objects, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < objects.size(); i++) {
+                    }
+                    postsList.clear();
+                    postAdapter.notifyDataSetChanged();
+                    postsList.addAll(objects);
+                    postAdapter.notifyDataSetChanged();
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 }

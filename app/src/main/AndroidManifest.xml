@@ -27,7 +27,6 @@
         <activity android:name=".profile.AccountSettings" />
         <activity android:name=".likes.LikesActivity" />
         <activity android:name=".profile.ProfileActivity" />
-        <activity android:name=".search.SearchActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".SignUpActivity" />
         <activity
