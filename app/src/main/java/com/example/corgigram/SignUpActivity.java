@@ -11,8 +11,10 @@ import android.widget.EditText;
 import com.example.corgigram.home.HomeActivity;
 import com.example.corgigram.model.User;
 import com.example.corgigram.share.ShareActivity;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import butterknife.BindView;
@@ -39,12 +41,12 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create the ParseUser
-                User user = new User();
+                ParseUser user = new ParseUser();
                 // Set core properties
                 user.setUsername(username.getText().toString());
                 user.setPassword(password.getText().toString());
                 user.setEmail(email.getText().toString());
-                user.setName(name.getText().toString());
+                //user.setName(name.getText().toString());
 
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
@@ -57,8 +59,11 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                         // Sign-up successful - pass intent to home page
                         Log.d(TAG, "Login Successful");
+
                         final Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                         startActivity(intent);
+                        finish();
+
                     }
                 });
             }
