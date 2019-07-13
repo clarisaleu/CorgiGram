@@ -53,30 +53,13 @@ public class PostDetails extends AppCompatActivity {
         tvUserName.setText("@"+ username);
         tvUserName2.setText("@"+username);
         tvDesc.setText("    "+descr);
-        String posted = getRelativeTimeAgo(datePost);
-        date.setText("Posted " +posted);
+        date.setText(datePost);
         // Get Profile Image and display if it exists
         Glide.with(this).load(profImg).into(ivProf);
         Glide.with(this).load(img).into(ivImage);
 
     }
 
-    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
-    public String getRelativeTimeAgo(String rawJsonDate) {
-        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
-        sf.setLenient(true);
 
-        String relativeDate = "";
-        try {
-            long dateMillis = sf.parse(rawJsonDate).getTime();
-            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return relativeDate;
-    }
 
 }
